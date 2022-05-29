@@ -30,4 +30,15 @@ Today I signed up for Confluent Cloud and created the following from the Conflue
  
 **Key** - Is not a primary key or a unique identifier of the message while it represents a identifier of some entity of the system like a user, order or a particular connected device.
 
+**Day #02 of #100daysofcode – Confluent Kafka**
+
+Today I used the Kafka cluster in the Confluent Cloud and performed the following from the Confluent Web Interface
+- Created a **Source (Connector) – DatagenSourceConnector 
+- Created a **Sink (Connector) – AWS S3 Sink
+- Generated messages from the Source and Produced them to the Topic (name: quickstart)
+- Viewed the message stored in the Topic within the Kafka Broker
+- Read the messages from the Topic and **Consumed** them to ingest to S3 Sink
+![Source & Sink](Day02.jpg)
+
+ 
 
