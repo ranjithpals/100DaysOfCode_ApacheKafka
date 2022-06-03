@@ -40,7 +40,7 @@ Today I used the Kafka cluster in the Confluent Cloud and performed the followin
 - Read the messages from the Topic and **Consumed** them to ingest to S3 Sink
 ![Source & Sink](Day02.jpg)
 
- Day #03 of #100daysofcode – Confluent Kafka
+ **Day #03 of #100daysofcode – Confluent Kafka
 
 Today I analyzed the object stored in the S3 Bucket (Kafka  Sink). 
 Sample message: JSON format
@@ -63,4 +63,35 @@ Partitioning interval of data, accordingly to the time ingested to storage.
 ![S3-Bucket-Partitions](partition_logic.png)
 ![S3-Bucket-Partitions](S3_bucket_UI.png)
 ![S3-Bucket-Partitions](message.png)
+
+**Day #04 of #100daysofcode – Confluent Kafka
+
+Today I was able to accomplish the following
+1.	Created a Kafka topic, put some messages into it, and read your messages out using both the Confluent Cloud Console.
+2.	Create the Confluent CLI as a Connector to the cluster.
+3.	Finally, produce additional messages to your topic directly from the CLI, viewing real-time data streams in both another CLI window and the Confluent Cloud Console.
+Steps to create Confluent CLI in Windows
+https://developer.confluent.io/learn-kafka/apache-kafka/get-started-hands-on/?
+
+**Add the text file with CLI commands**
+
+**Day #05 of #100daysofcode – Confluent Kafka
+
+Today I was able to create the following from the Confluent CLI
+1.	Created a Kafka topic with number of topics specified
+a.	/mnt/c/WINDOWS/system32$ confluent kafka topic create --partitions 1 poems_1
+2.	Describe the topic and its configuration properties
+a.	/mnt/c/WINDOWS/system32$ confluent kafka topic describe poems_1
+3.	Produce some messages into the topic/partition.
+a.	/mnt/c/WINDOWS/system32$ confluent kafka topic produce poems_1 --parse-key
+Starting Kafka Producer. Use Ctrl-C or Ctrl-D to exit.
+5:"From the ashes the fire will awaken"
+6:"A light from the shadows will spring"
+7:"The crownless again will be the king"
+4.	Consume all messages from the topic/partition.
+a.	/mnt/c/WINDOWS/system32$ confluent kafka topic consume poems_1 --from-beginning
+b.	Starting Kafka Producer. Use Ctrl-C or Ctrl-D to exit.
+5:"From the ashes the fire will awaken"
+6:"A light from the shadows will spring"
+7:"The crownless again will be the king"
 
