@@ -40,7 +40,7 @@ Today I used the Kafka cluster in the Confluent Cloud and performed the followin
 - Read the messages from the Topic and **Consumed** them to ingest to S3 Sink
 ![Source & Sink](Day02.jpg)
 
- **Day #03 of #100daysofcode – Confluent Kafka
+ **Day #03 of #100daysofcode – Confluent Kafka**
 
 Today I analyzed the object stored in the S3 Bucket (Kafka  Sink). 
 Sample message: JSON format
@@ -64,7 +64,7 @@ Partitioning interval of data, accordingly to the time ingested to storage.
 ![S3-Bucket-Partitions](S3_bucket_UI.png)
 ![S3-Bucket-Partitions](message.png)
 
-**Day #04 of #100daysofcode – Confluent Kafka
+**Day #04 of #100daysofcode – Confluent Kafka**
 
 Today I was able to accomplish the following
 1.	Created a Kafka topic, put some messages into it, and read your messages out using both the Confluent Cloud Console.
@@ -75,7 +75,7 @@ https://developer.confluent.io/learn-kafka/apache-kafka/get-started-hands-on/?
 
 **Add the text file with CLI commands**
 
-**Day #05 of #100daysofcode – Confluent Kafka
+**Day #05 of #100daysofcode – Confluent Kafka**
 
 Today I was able to create the following from the Confluent CLI
 1.	Created a Kafka topic with number of topics specified
