@@ -40,5 +40,27 @@ Today I used the Kafka cluster in the Confluent Cloud and performed the followin
 - Read the messages from the Topic and **Consumed** them to ingest to S3 Sink
 ![Source & Sink](Day02.jpg)
 
- 
+ Day #03 of #100daysofcode – Confluent Kafka
+
+Today I analyzed the object stored in the S3 Bucket (Kafka  Sink). 
+Sample message: JSON format
+{
+  "ordertime": 1505266540190,
+  "orderid": 24,
+  "itemid": "Item_233",
+  "orderunits": 6.344119191980837,
+  "address": {
+   	"city": "City_81",
+   	"state": "State_91",
+   	"zipcode": 50785
+}
+}
+
+Sink Settings: 
+Data to be ingested into the S3 Sink is organized by Time Interval: Daily
+Partitioning interval of data, accordingly to the time ingested to storage.
+
+![S3-Bucket-Partitions](12.png)
+![S3-Bucket-Partitions](123.png)
+![S3-Bucket-Partitions](1234.png)
 
