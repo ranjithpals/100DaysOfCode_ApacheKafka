@@ -60,7 +60,7 @@ Sink Settings:
 Data to be ingested into the S3 Sink is organized by Time Interval: Daily
 Partitioning interval of data, accordingly to the time ingested to storage.
 
-![S3-Bucket-Partitions](12.png)
-![S3-Bucket-Partitions](123.png)
-![S3-Bucket-Partitions](1234.png)
+![S3-Bucket-Partitions](partition_logic.png)
+![S3-Bucket-Partitions](S3_bucket_UI.png)
+![S3-Bucket-Partitions](message.png)
 
