@@ -5,6 +5,7 @@ from random import choice
 from argparse import ArgumentParser, FileType
 from configparser import ConfigParser
 from confluent_kafka import Producer
+from faker import Faker
 
 if __name__ == '__main__':
     # Parse the command line.
@@ -31,20 +32,19 @@ if __name__ == '__main__':
             print("Produced event to topic {topic}: key = {key:12} value = {value:12}".format(
                 topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
 
-    # Produce data by selecting random values from these lists.
-    topic = "cc_transactions"
-    cc_numbers = ['34643', '12567', '69869', '99989', '66667']
-    transaction_ts = ['2022-04-01 10:30:45.333', '2022-04-01 10:30:46.222', '2022-04-01 10:30:47.501']
+    # Produce data by selecting random values from Faker library.
+    fake = Faker()
+    
+    topic = 'cc_transactions'
     card_type = 'visa'
-
-    count = 0
-    for _ in range(50):
-
-        cc_num = choice(cc_numbers)
-        trans_ts = choice(transaction_ts)
-        msg = "{\"cc_num\":"+"'"+cc_num+"'"+",\"trans_ts\":"+"'"+trans_ts+"'"+"}"
+    
+    while True:
+        cc_num = fake.credit_card_number()
+        trans_ts = fake.date_time()
+        # print(cc_num, trans_ts) 
+        msg = "{\"cc_num\":"+cc_num+",\"trans_ts\":"+str(trans_ts)+"}"
         producer.produce(topic, msg, card_type, callback=delivery_callback)
-        count += 1
+        #count += 1
 
     # Block until the messages are sent.
     producer.poll(10000)
