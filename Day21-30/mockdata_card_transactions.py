@@ -34,6 +34,6 @@ class FakeCreditCardData:
         # Equivalent json string of input dictionary:
         return json.dumps(self.convert_to_dict())
 
-# Output message stored in Kafka Topic
+# Output of json_serialization method - message stored in Kafka Topic
 # {"_card_type": "VISA 16 digit", "_card_num": "561957897714"
 # "_security_code": "362", "_trans_ts": "06-17-22 01:51:22"}
