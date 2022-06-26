@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-import sys
-from random import choice
+import random
 from argparse import ArgumentParser, FileType
 from configparser import ConfigParser
 from confluent_kafka import Producer
 from faker import Faker
+from collections import defaultdict
+from mockdata_card_transactions import FakeCreditCardData, createCard_SecurityCode
 
 if __name__ == '__main__':
     # Parse the command line.
@@ -32,19 +33,26 @@ if __name__ == '__main__':
             print("Produced event to topic {topic}: key = {key:12} value = {value:12}".format(
                 topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
 
-    # Produce data by selecting random values from Faker library.
+    # Topic to write messages
+    topic = 'visa_transactions'
+    # Create a faker object
     fake = Faker()
-    
-    topic = 'cc_transactions'
-    card_type = 'visa'
-    
+    # Generate card number and security code details
+    card_security = createCard_SecurityCode(30, fake)
+    # Create a DefaultDict to count the occurrences of same card
+    customers = defaultdict(int)
+    count = 0
     while True:
-        cc_num = fake.credit_card_number()
-        trans_ts = fake.date_time()
-        # print(cc_num, trans_ts) 
-        msg = "{\"cc_num\":"+cc_num+",\"trans_ts\":"+str(trans_ts)+"}"
-        producer.produce(topic, msg, card_type, callback=delivery_callback)
-        #count += 1
+        # Derive Card Number
+        cc_number = random.choice(list(card_security.keys()))
+        customer = FakeCreditCardData(fake.credit_card_provider('visa'),
+                                      cc_number,
+                                      card_security[cc_number],
+                                      fake.credit_card_expire
+                                      (start='now', end='+10s', date_format="%m-%d-%y %H:%M:%S"))
+        # Produce records to the topic
+        producer.produce(topic, customer.json_serialization(), fake.credit_card_provider('visa'),
+                         callback=delivery_callback)
 
     # Block until the messages are sent.
     producer.poll(10000)

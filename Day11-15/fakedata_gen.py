@@ -24,6 +24,9 @@ so that the followers clearly recognize that you are no longer employed by CGI a
 
 Purple Sage School Registration.
 
+Audio 6
+# God is the creator and you have to trust that he exists
+# He is the one who manages everything that exists in this universe.
 
 Audio 7
 # World is full of imperfections
