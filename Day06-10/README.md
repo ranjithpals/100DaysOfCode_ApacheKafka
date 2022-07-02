@@ -58,7 +58,9 @@ Today I was able to create a Topic in an existing Kafka cluster and perform the 
 o	Create a Kafka Source Connector API and send messages to the broker
 o	Confluent Kafka Web Interface provides sample message templates and file format for users to test the data flow.
 o	Create a Console Consumer using a CLI instance of and consume the messages.
- 
+![Message Schema Format](DataSchemaFormat-at-Rest.png)
+![Sample Messages](SampleMessages.jpg)
+
 **Day #10 of #100DaysOfCode @ApacheKafka**
 
 Today I was able to understand the basics of Confluent Kafka Schema Registry. Schema Registry provides a way to store the schema of the message which is produced and sent to Kafka brokers. 
@@ -69,14 +71,6 @@ Today I was able to understand the basics of Confluent Kafka Schema Registry. Sc
 •	Create a Console Consumer and read the messages from beginning, the data displayed is in serialized format.
 •	Create another Console consumer with an API key and API secret and output value format as AVRO.
 
- 
- 
- 
-Output Format = AVRO
- 
+![Output Format = AVRO](DataSerialized.jpg) 
 
-Data is de-serialized using the API Key value and secret. 
- 
-
- 
-
+![De-serialized data using the API Key value and secret](Data_deserialized.jpg)
