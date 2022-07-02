@@ -59,7 +59,7 @@ Today I was able to create a Topic in an existing Kafka cluster and perform the 
 -	Confluent Kafka Web Interface provides sample message templates and file format for users to test the data flow.
 -	Create a Console Consumer using a CLI instance of and consume the messages.
 
-![Message Schema Format](DataSchemaFormat-at-Rest.png)
+![Message Schema Format](DataSchemaFormat-at-Rest.jpg)
 
 ![Sample Messages](SampleMessages.jpg)
 
