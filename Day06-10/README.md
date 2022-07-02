@@ -42,3 +42,41 @@ https://developer.confluent.io/learn-kafka/apache-kafka/consumers-hands-on/
 
 Install pip, virtualenv in Unix Environment
 https://gist.github.com/frfahim/73c0fad6350332cef7a653bcd762f08d
+
+**Day #08 of #100DaysOfCode @ApacheKafka**
+
+Today I was able to learn about the one of the Kafka’s ecosystem components which is called Kafka Connect and its significance in using Kafka to solve real-world use cases. In short it can be understood as Kafka’s Integration API.
+
+Kafka Connect includes two types of connectors:
+Source connector – Ingests entire databases and streams table updates to Kafka topics. A source connector can also collect metrics from all your application servers and store these in Kafka topics, making the data available for stream processing with low latency.
+Sink connector – Delivers data from Kafka topics into secondary indexes such as Elasticsearch, or batch systems such as Hadoop for offline analysis.
+
+
+**Day #09 of #100DaysOfCode @ApacheKafka**
+
+Today I was able to create a Topic in an existing Kafka cluster and perform the following.
+o	Create a Kafka Source Connector API and send messages to the broker
+o	Confluent Kafka Web Interface provides sample message templates and file format for users to test the data flow.
+o	Create a Console Consumer using a CLI instance of and consume the messages.
+ 
+**Day #10 of #100DaysOfCode @ApacheKafka**
+
+Today I was able to understand the basics of Confluent Kafka Schema Registry. Schema Registry provides a way to store the schema of the message which is produced and sent to Kafka brokers. 
+•	Setup the Schema Registry, from the Schema Registry landing page
+•	Create a Topic and setup a Connector with generates a default message template with an output value format stored in an AVRO format.
+•	Once the connector gets initialized, and starts generating messages.
+•	Messages are serialized and stored in AVRO format.
+•	Create a Console Consumer and read the messages from beginning, the data displayed is in serialized format.
+•	Create another Console consumer with an API key and API secret and output value format as AVRO.
+
+ 
+ 
+ 
+Output Format = AVRO
+ 
+
+Data is de-serialized using the API Key value and secret. 
+ 
+
+ 
+
