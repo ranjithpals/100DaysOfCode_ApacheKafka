@@ -63,7 +63,7 @@ TABLE AGGREGATIONS
 select * from STATE_COUNTS 
 WHERE distinct_orders > 2;
 
-Day #13 of #100DaysOfCode @ApacheKafka
+**Day #13 of #100DaysOfCode @ApacheKafka**
 
 Today I went through the developer pages about Apache Kafka Raft (KRaft). It is the consensus protocol that was introduced to remove Apache Kafka’s dependency on ZooKeeper for metadata management. This greatly simplifies Kafka’s architecture by consolidating responsibility for metadata into Kafka itself, rather than splitting it between two different systems: ZooKeeper and Kafka. KRaft mode makes use of a new quorum controller service in Kafka which replaces the previous controller and makes use of an event-based variant of the Raft consensus protocol.
 
