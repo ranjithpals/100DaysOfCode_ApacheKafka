@@ -55,11 +55,12 @@ Sink connector – Delivers data from Kafka topics into secondary indexes such a
 **Day #09 of #100DaysOfCode @ApacheKafka**
 
 Today I was able to create a Topic in an existing Kafka cluster and perform the following.
-o	Create a Kafka Source Connector API and send messages to the broker
-o	Confluent Kafka Web Interface provides sample message templates and file format for users to test the data flow.
-o	Create a Console Consumer using a CLI instance of and consume the messages.
+-	Create a Kafka Source Connector API and send messages to the broker
+-	Confluent Kafka Web Interface provides sample message templates and file format for users to test the data flow.
+-	Create a Console Consumer using a CLI instance of and consume the messages.
 
 ![Message Schema Format](DataSchemaFormat-at-Rest.png)
+
 ![Sample Messages](SampleMessages.jpg)
 
 **Day #10 of #100DaysOfCode @ApacheKafka**
