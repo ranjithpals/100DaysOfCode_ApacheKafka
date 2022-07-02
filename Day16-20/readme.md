@@ -27,6 +27,7 @@ Today I was able to create a very simplified version of a real-time event driven
 ![Simplified Fraud Detection](Possible_fraud.png)
  
 **Day #20 of #100DaysOfCode @ApacheKafka**
+
 Today I tried improving the Custom Producer script using Faker module.
 1.	Card Type – Default to ‘visa’ 
 2.	Card Number – Credit card number
