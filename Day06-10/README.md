@@ -2,30 +2,30 @@
 
 Today I was able to understand a bit more about Kafka’s features
 1.	Brokers
-•	A computer, instance, or container running Kafka process
-•	Manager Partitions
-•	Handle write and read requests
-•	Manager replication of partitions
+-	A computer, instance, or container running Kafka process
+-	Manager Partitions
+-	Handle write and read requests
+-	Manager replication of partitions
 2.	Replication
-•	Copies of data for fault tolerance
-•	One lead partition and N-1 followers
-•	Writes and reads happen to the same leader
-•	An invisible process to most developers.
-•	Tunable in the Producer
+-	Copies of data for fault tolerance
+-	One lead partition and N-1 followers
+-	Writes and reads happen to the same leader
+-	An invisible process to most developers.
+-	Tunable in the Producer
 3.	Producers
-•	Client application
-•	Puts messages into topics
-•	Connection pooling
-•	Network buffering
-•	Partitioning
+-	Client application
+-	Puts messages into topics
+-	Connection pooling
+-	Network buffering
+-	Partitioning
 4.	Consumers
-•	Client application
-•	Gets message from topics
-•	Group of Consumers logically belong to the Consumer Group
-•	Messages can be read multiple times with the knowledge of the record’s offset
-•	Typically, number of Consumers in a Consumer group is equal or lesser than the number of partitions of a Topic.
-•	Two consumers cannot read the same partition of a given Topic.
-•	One consumer can read from more than one Partition of a given Topic.
+-	Client application
+-	Gets message from topics
+-	Group of Consumers logically belong to the Consumer Group
+-	Messages can be read multiple times with the knowledge of the record’s offset
+-	Typically, number of Consumers in a Consumer group is equal or lesser than the number of partitions of a Topic.
+-	Two consumers cannot read the same partition of a given Topic.
+-	One consumer can read from more than one Partition of a given Topic.
 
 **Day #07 of #100DaysOfCode @ApacheKafka**
 
