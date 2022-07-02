@@ -58,6 +58,7 @@ Today I was able to create a Topic in an existing Kafka cluster and perform the 
 o	Create a Kafka Source Connector API and send messages to the broker
 o	Confluent Kafka Web Interface provides sample message templates and file format for users to test the data flow.
 o	Create a Console Consumer using a CLI instance of and consume the messages.
+
 ![Message Schema Format](DataSchemaFormat-at-Rest.png)
 ![Sample Messages](SampleMessages.jpg)
 
