@@ -10,7 +10,7 @@ https://github.com/ranjithpals/100DaysOfCode_ApacheKafka/blob/main/Day21-30/mock
 Today I was trying to convert the object properties into dictionary, and then convert the dictionary to JSON string (deserialize). 
 I would be using the concept in my credit card transaction producer application script.
 
-![Dict dunder methods](Day_#22.png)
+![Dict dunder methods](Day_22.png)
 
 **Day #23 of #100DaysOfCode @ApacheKafka**
 Today I spent time going through this very informative, easy to understand article explaining the concept of serialization and de-serialization of data objects,
