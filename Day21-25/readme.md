@@ -10,18 +10,24 @@ https://github.com/ranjithpals/100DaysOfCode_ApacheKafka/blob/main/Day21-30/mock
 Today I was trying to convert the object properties into dictionary, and then convert the dictionary to JSON string (deserialize). 
 I would be using the concept in my credit card transaction producer application script.
 
-![Dict dunder methods](Day_#22.png)
+![Dict dunder methods](Day_22.png)
 
 **Day #23 of #100DaysOfCode @ApacheKafka**
 Today I spent time going through this very informative, easy to understand article explaining the concept of serialization and de-serialization of data objects,
 why and where it is needed in the distributed data systems space.
-What is serialization and how does it work? | Hazelcast
-Credit: Hazelcast
+What is serialization and how does it work? | Credit: Hazelcast
+
+https://hazelcast.com/glossary/serialization/
+
+![serialization](serialization-diagram.png)
+![ser-deser](serialization-deserialization-diagram.png)
 
 **Day #24 of #100DaysOfCode @ApacheKafka**
 Today I was able to install the Confluent Kafka CLI which is needed to run Client Applications (Producer/Consumer) 
-written in any of the Programming languages (Python in my case). 
+written in any of the Programming languages (Python in my case).
+
 https://docs.confluent.io/confluent-cli/current/install.html#cli-install
+
 On Windows, you might need to install an appropriate Linux environment to have the curl and sh commands available, 
 such as the Windows Subsystem for Linux. You can also download and install the raw binaries.
 
