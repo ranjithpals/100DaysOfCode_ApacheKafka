@@ -12,7 +12,7 @@ Below is the part of the producer script.
 Today I spent time resolving the issue which came up when I ran the credit card transaction client application in the Kafka cluster. 
 Below is a brief on the issue and its solution.
 Credits: https://stackoverflow.com/questions/62408128/buffererror-local-queue-full-in-python
-![Client Application with Mock Generator](Day_27.png)
+![Client Application with Mock Generator](Day_28.png)
 
 **Day #29 of #100DaysOfCode @ApacheKafka**
 Today I spent time understanding and using the Producer configuration: linger.ms. 
