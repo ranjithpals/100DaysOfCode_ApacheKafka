@@ -28,26 +28,28 @@ such as the Windows Subsystem for Linux. You can also download and install the r
 **Day #25 of #100DaysOfCode @ApacheKafka**
 Today I was able to run the following commands for Confluent Cluster from the CLI. 
 $:/mnt/c/WINDOWS/system32$ confluent environment list
+
        ID      |  Name
 ---------------+----------
   * env-o337dy | default
 
-$:/mnt/c/WINDOWS/system32$ use env-o337dy
-$ confluent environment use env-o337dy
+- $:/mnt/c/WINDOWS/system32$ use env-o337dy
+- $ confluent environment use env-o337dy
 Now using "env-o337dy" as the default (active) environment.
-$:/mnt/c/WINDOWS/system32$ confluent kafka cluster list
+- $:/mnt/c/WINDOWS/system32$ confluent kafka cluster list
 
        Id      |      Name      | Type  | Provider |  Region   | Availability | Status
 ---------------+----------------+-------+----------+-----------+--------------+---------
     lkc-7y5jyj | DemoCluster_01 | BASIC | aws      | us-east-1 | single-zone  | UP
 
-$:/mnt/c/WINDOWS/system32$ confluent kafka cluster use lkc-7y5jyj
+- $:/mnt/c/WINDOWS/system32$ confluent kafka cluster use lkc-7y5jyj
 Set Kafka cluster "lkc-7y5jyj" as the active cluster for environment "env-o337dy".
-$:/mnt/c/WINDOWS/system32$ confluent api-key create --resource lkc-7y5jyj
+- $:/mnt/c/WINDOWS/system32$ confluent api-key create --resource lkc-7y5jyj
 
-$:/mnt/c/WINDOWS/system32$ confluent api-key use XXXXXXXXXXXXXXXXX --resource lkc-7y5jyj
+- $:/mnt/c/WINDOWS/system32$ confluent api-key use XXXXXXXXXXXXXXXXX --resource lkc-7y5jyj
 Set API Key "XOXWP6VDE5SU2NKO" as the active API key for "lkc-7y5jyj".
-$ confluent kafka topic list
+- $ confluent kafka topic list
+
   Name
 ---------
   poems
