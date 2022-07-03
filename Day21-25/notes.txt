@@ -1,0 +1,21 @@
+(venv) learngvrk@Ranjith-Lenovo:/mnt/c/Users/Owner/documents/kafka/100DaysOfCode_ApacheKafka/Day21-30$ ./cc_faker_producer.py config.ini
+Traceback (most recent call last):
+  File "./cc_faker_producer.py", line 59, in <module>
+    producer.produce(topic, customer.json_serialization(), fake.credit_card_provider('visa'),
+BufferError: Local: Queue full
+(venv) learngvrk@Ranjith-Lenovo:/mnt/c/Users/Owner/documents/kafka/100DaysOfCode_ApacheKafka/Day21-30$
+
+# Required connection configs for Kafka producer, consumer, and admin
+bootstrap.servers=pkc-2396y.us-east-1.aws.confluent.cloud:9092
+security.protocol=SASL_SSL
+sasl.mechanisms=PLAIN
+sasl.username={{ CLUSTER_API_KEY }}
+sasl.password={{ CLUSTER_API_SECRET }}
+
+# Best practice for higher availability in librdkafka clients prior to 1.7
+session.timeout.ms=45000
+
+# Required connection configs for Confluent Cloud Schema Registry
+schema.registry.url=https://psrc-yorrp.us-east-2.aws.confluent.cloud
+basic.auth.credentials.source=USER_INFO
+basic.auth.user.info={{ SR_API_KEY }}:{{ SR_API_SECRET }}

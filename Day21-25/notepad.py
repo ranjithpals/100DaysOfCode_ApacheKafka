@@ -1,6 +1,5 @@
+#!/usr/bin/env python
 import json
-
-
 class NotePad:
     def __init__(self, x, y, z):
         self._x = x
