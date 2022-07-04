@@ -4,15 +4,14 @@ import random
 from argparse import ArgumentParser, FileType
 from configparser import ConfigParser
 from confluent_kafka import Producer
-from faker import Faker
 from collections import defaultdict
-from mockdata_card_transactions import FakeCreditCardData, createCard_details
+from card_transactions_helper import *
+
 
 if __name__ == '__main__':
     # Parse the command line.
     parser = ArgumentParser()
     parser.add_argument('config_file', type=FileType('r'))
-    parser
     args = parser.parse_args()
 
     # Parse the configuration.
@@ -38,24 +37,16 @@ if __name__ == '__main__':
 
     # Topic to write messages
     topic = 'credcard02'
-    # Create a faker object
-    fake = Faker()
     # Generate card number and security code details
-    card_details = createCard_details(30, fake)
+    generate_card_details(30)
     # Create a DefaultDict to count the occurrences of same card
     customers = defaultdict(int)
     count = 0
     while True:
         for _ in range(50):
-            # Derive Card Number
-            cc_number = random.choice(list(card_details.keys()))
-            customer = FakeCreditCardData(card_details[cc_number].card_provider,
-                                          cc_number,
-                                          card_details[cc_number].security_code,
-                                          fake.credit_card_expire(start='now', end='+10s',
-                                                                  date_format="%m-%d-%y %H:%M:%S"))
+            customer = generate_card_transaction()
             # Produce records to the topic
-            producer.produce(topic, customer.json_serialization(), fake.credit_card_provider('visa'),
+            producer.produce(topic, customer.json_serialization(), customer.card_type(),
                              callback=delivery_callback)
 
         producer.poll(1)
