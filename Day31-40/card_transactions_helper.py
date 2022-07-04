@@ -1,13 +1,24 @@
 # Credit Card transaction mock data generator
 import json
+from collections import namedtuple
+
+
+# Extract the Credit Card Provider from the faker credit_card_provider method
+def extract_card_provider(card_provider_full_description: str) -> str:
+    provider_name = card_provider_full_description.split(" ")[0]
+    return provider_name
 
 
 # Create Mock CreditCard Numbers and corresponding security code
-def createCard_SecurityCode(num_cards: int, mock):
+def createCard_details(num_cards: int, mock) -> dict:
     # Create an dictionary of card numbers and security code
     card_code = {}
     for _ in range(0, num_cards):
-        card_code[mock.credit_card_number()] = mock.credit_card_security_code()
+        security_code = mock.credit_card_security_code()
+        card_provider = extract_card_provider(mock.credit_card_provider())
+        cc_details = namedtuple("cc_details", "sec_code cc_provider")
+        temp_details = cc_details(security_code, card_provider)
+        card_code[mock.credit_card_number()] = temp_details
     return card_code
 
 

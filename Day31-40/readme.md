@@ -12,3 +12,9 @@ Today while creating a python script to be run in a Linux environment (typically
 -	Include the python installation directory as first line of the script - #!/usr/bin/env python
 -	To run the script from the shell - ./filename.py
 ![Run Python script in Linux](Day_32.png)
+
+**Day #33 of #100DaysOfCode @ApacheKafka**
+Today I started modifying the mock card transaction helper module python file to perform the following changes.
+-	Create different type of card providers for the mock card transactions we are trying to generate for the client application.
+-	Instead of capturing the full description of the card provider (provided by the credit_card_provider method of faker class)
+-	Assign the card provider to the Key of the message sent to Kafka topic.
