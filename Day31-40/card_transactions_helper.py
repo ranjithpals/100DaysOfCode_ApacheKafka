@@ -4,9 +4,11 @@ import random
 from collections import namedtuple
 from faker import Faker
 
+# Functions to be publicly available when module is imported
 __all__ = ['generate_card_details', 'generate_card_transaction']
-# Declare dictionary to hold card details
-card_details = {}
+
+# Create a faker object
+fake = Faker()
 
 
 # Extract the Credit Card Provider from the faker credit_card_provider method
@@ -17,26 +19,28 @@ def extract_card_provider(card_provider_full_description: str) -> str:
 
 # Create Mock CreditCard Numbers and corresponding security code
 def generate_card_details(num_cards: int):  # -> dict:
-    # Create an dictionary of card numbers and security code
-    card_code = {}
+    # Declare dictionary to hold card details
+    card_details = {}
     for _ in range(0, num_cards):
-        security_code = Faker.credit_card_security_code()
-        card_provider = extract_card_provider(Faker.credit_card_provider())
+        security_code = fake.credit_card_security_code()
+        card_provider = extract_card_provider(fake.credit_card_provider())
         cc_details = namedtuple("cc_details", "sec_code cc_provider")
         temp_details = cc_details(security_code, card_provider)
-        card_code[Faker.credit_card_number()] = temp_details
-    # return card_details
+        # print(temp_details)
+        card_details[fake.credit_card_number()] = temp_details
+    return card_details
+    # print(card_details)
 
 
-def generate_card_transaction():
+def generate_card_transaction(card_details):
     # Derive Card Number
     cc_number = random.choice(list(card_details.keys()))
     # Create the FakeCreditCardData Class object
-    customer_obj = FakeCreditCardData(card_details[cc_number].card_provider,
+    customer_obj = FakeCreditCardData(card_details[cc_number].cc_provider,
                                       cc_number,
-                                      card_details[cc_number].security_code,
-                                      Faker.credit_card_expire(start='now', end='+10s',
-                                                               date_format="%m-%d-%y %H:%M:%S"))
+                                      card_details[cc_number].sec_code,
+                                      fake.credit_card_expire(start='now', end='+10s',
+                                                              date_format="%m-%d-%y %H:%M:%S"))
     return customer_obj
 
 
@@ -62,11 +66,11 @@ class FakeCreditCardData:
         # json.dumps() function converts a Python object (dictionary) into string and stores it in json_string.
         # Equivalent json string of input dictionary:
         return json.dumps(self.convert_to_dict())
-    
+
     @property
     def card_type(self):
         return self._card_type
 
 # Output of json_serialization method - message stored in Kafka Topic
-# {"_card_type": "VISA 16 digit", "_card_num": "561957897714"
+# {"_card_type": "VISA", "_card_num": "561957897714"
 # "_security_code": "362", "_trans_ts": "06-17-22 01:51:22"}

@@ -38,13 +38,13 @@ if __name__ == '__main__':
     # Topic to write messages
     topic = 'credcard02'
     # Generate card number and security code details
-    generate_card_details(30)
+    cc_details = generate_card_details(30)
     # Create a DefaultDict to count the occurrences of same card
     customers = defaultdict(int)
     count = 0
     while True:
         for _ in range(50):
-            customer = generate_card_transaction()
+            customer = generate_card_transaction(cc_details)
             # Produce records to the topic
             producer.produce(topic, customer.json_serialization(), customer.card_type(),
                              callback=delivery_callback)

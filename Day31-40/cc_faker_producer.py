@@ -24,15 +24,19 @@ if __name__ == '__main__':
     producer = Producer(config)
     print(config.items())
 
-    # Optional per-message delivery callback (triggered by poll() or flush())
-    # when a message has been successfully delivered or permanently
-    # failed delivery (after retries).
+
+    '''
+    Optional per-message delivery callback (triggered by poll() or flush())
+    when a message has been successfully delivered or permanently
+    failed delivery (after retries)
+    '''
     def delivery_callback(err, msg):
         if err:
             print('ERROR: Message failed delivery: {}'.format(err))
         else:
             print("Produced event to topic {topic}: key = {key:12} value = {value:12}".format(
                 topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
+
 
     # Topic to write messages
     topic = 'credcard02'
@@ -48,14 +52,14 @@ if __name__ == '__main__':
             # Derive Card Number
             cc_number = random.choice(list(card_security.keys()))
             customer = FakeCreditCardData(fake.credit_card_provider('visa'),
-                        cc_number,
-                        card_security[cc_number],
-                        fake.credit_card_expire
-                        (start='now', end='+10s', date_format="%m-%d-%y %H:%M:%S"))
+                                          cc_number,
+                                          card_security[cc_number],
+                                          fake.credit_card_expire
+                                          (start='now', end='+10s', date_format="%m-%d-%y %H:%M:%S"))
             # Produce records to the topic
             producer.produce(topic, customer.json_serialization(), fake.credit_card_provider('visa'),
-                         callback=delivery_callback)
-        
+                             callback=delivery_callback)
+
         producer.poll(1)
 
     # Block until the messages are sent.
