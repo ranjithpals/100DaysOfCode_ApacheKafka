@@ -11,8 +11,11 @@ from card_transactions_helper import *
 if __name__ == '__main__':
     # Parse the command line.
     parser = ArgumentParser()
-    parser.add_argument('config_file', type=FileType('r'))
+    parser.add_argument('config_file', type=FileType('r'))          # Add argument for configuration file
+    parser.add_argument('--topic_name', type=str, required=True)    # Add argument for topic name
+    parser.add_argument('--poll_time', type=int, required=False, default=1)     # Add argument for producer poll time
     args = parser.parse_args()
+    print(args.topic_name, args.poll_time)
 
     # Parse the configuration.
     # See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
@@ -36,7 +39,7 @@ if __name__ == '__main__':
                 topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
 
     # Topic to write messages
-    topic = 'credcard02'
+    topic = args.topic_name
     # Generate card number and security code details
     cc_details = generate_card_details(30)
     # Create a DefaultDict to count the occurrences of same card
@@ -49,7 +52,7 @@ if __name__ == '__main__':
             producer.produce(topic, customer.json_serialization(), customer.card_type(),
                              callback=delivery_callback)
 
-        producer.poll(1)
+        producer.poll(args.poll_time)
 
     # Block until the messages are sent.
     # producer.poll(10000)

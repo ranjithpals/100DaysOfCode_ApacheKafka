@@ -55,7 +55,7 @@ class FakeCreditCardData:
 
     # Representation of Object
     def __repr__(self):
-        return f'Card Type: {self._card_type.split(" ", 1)[0]}, Card Number: {self._card_num} \n \
+        return f'Card Type: {self._card_type}, Card Number: {self._card_num} \n \
                security_code: {self._security_code}, Transaction_timestamp: {self._trans_ts}'
 
     def convert_to_dict(self):

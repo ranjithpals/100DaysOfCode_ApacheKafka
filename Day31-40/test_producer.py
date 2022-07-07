@@ -6,5 +6,5 @@ if __name__ == "__main__":
     for k, v in cc_details.items():
         print(f'Card Number:{k}, \t {v}')
     transaction = cc_for_test.generate_card_transaction(cc_details)
-    print("Sample Transaction")
-    print(transaction)
+    print("Sample Message to Kafka")
+    print(f'Key: {transaction.card_type}, Message: {transaction.json_serialization()}')
