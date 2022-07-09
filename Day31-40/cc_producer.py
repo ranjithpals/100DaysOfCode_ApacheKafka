@@ -35,8 +35,9 @@ if __name__ == '__main__':
         if err:
             print('ERROR: Message failed delivery: {}'.format(err))
         else:
-            print("Produced event to topic {topic}: key = {key:12} value = {value:12}".format(
-                topic=msg.topic(), key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
+            print("Produced event to topic {topic}, partition {partition}: key = {key:12} value = {value:12}".format(
+                topic=msg.topic(), partition=msg.partition(), key=msg.key().decode('utf-8'),
+                value=msg.value().decode('utf-8')))
 
     # Topic to write messages
     topic = args.topic_name
@@ -49,7 +50,7 @@ if __name__ == '__main__':
         for _ in range(50):
             customer = generate_card_transaction(cc_details)
             # Produce records to the topic
-            producer.produce(topic, customer.json_serialization(), customer.card_type(),
+            producer.produce(topic, customer.json_serialization(), customer.card_type,
                              callback=delivery_callback)
 
         producer.poll(args.poll_time)
