@@ -36,7 +36,7 @@ def find_partition_index(card_provider: str, num_partitions: int) -> int:
         max_partition_index += 1
         card_provider_dict[card_provider] = max_partition_index
         return max_partition_index
-    elif max_partition_index < num_partitions and (num_partitions - max_partition_index) <= 1:
+    else:
         max_partition_index += 1
         msg_key = (max_partition_index - (max_partition_index//num_partitions)*num_partitions)
         card_provider_dict[card_provider] = msg_key
