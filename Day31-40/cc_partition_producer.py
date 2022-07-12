@@ -51,7 +51,7 @@ if __name__ == '__main__':
         for _ in range(50):
             customer = generate_card_transaction(cc_details)
             # Produce records to the topic
-            producer.produce(topic, customer.json_serialization(), customer.card_type, partition=customer.msg_key,
+            producer.produce(topic, customer.json_serialization(), customer.card_type, partition=customer.partition_key,
                              callback=delivery_callback)
 
         producer.poll(args.poll_time)

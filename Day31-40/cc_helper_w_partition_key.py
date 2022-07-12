@@ -26,18 +26,17 @@ def extract_card_provider(card_provider_full_description: str) -> str:
 # Find the partition index for the given key
 def find_partition_index(card_provider: str, num_partitions: int) -> int:
     global max_partition_index
-    if not card_provider_dict:
-        # First card_provider assign key as zero
-        card_provider_dict[card_provider] = 0
-        max_partition_index = 0
-        return 0
-    elif card_provider in card_provider_dict.keys():
+    if card_provider in card_provider_dict.keys():
         return card_provider_dict[card_provider]
+    elif not card_provider_dict:
+        # First card_provider assign key as zero
+        card_provider_dict[card_provider] = max_partition_index
+        return max_partition_index
     elif max_partition_index < num_partitions and (num_partitions - max_partition_index) > 1:
         max_partition_index += 1
         card_provider_dict[card_provider] = max_partition_index
         return max_partition_index
-    else:
+    elif max_partition_index < num_partitions and (num_partitions - max_partition_index) <= 1:
         max_partition_index += 1
         msg_key = (max_partition_index - (max_partition_index//num_partitions)*num_partitions)
         card_provider_dict[card_provider] = msg_key
