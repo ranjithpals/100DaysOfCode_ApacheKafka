@@ -19,17 +19,21 @@ def read_default_configuration(config_file: str) -> Producer:
     config = dict(config_parser['default'])
     return config
 
-    # Optional per-message delivery callback (triggered by poll() or flush())
-    # when a message has been successfully delivered or permanently failed delivery (after retries).
-    def delivery_callback(err, msg):
-        if err:
-            print('ERROR: Message failed delivery: {}'.format(err))
-        else:
-            print("Produced event to topic {topic}, partition {partition}: key = {key:12} value = {value:12}".format(
-                topic=msg.topic(), partition=msg.partition(), key=msg.key().decode('utf-8'),
-                value=msg.value().decode('utf-8')))
-            msg_partition[msg.key().decode('utf-8')] = msg.partition()
 
+# Optional per-message delivery callback (triggered by poll() or flush())
+# when a message has been successfully delivered or permanently failed delivery (after retries).
+def delivery_callback(err, msg):
+    if err:
+        print('ERROR: Message failed delivery: {}'.format(err))
+    else:
+        print("Produced event to topic {topic}, partition {partition}: key = {key:12} value = {value:12}".format(
+            topic=msg.topic(), partition=msg.partition(), key=msg.key().decode('utf-8'),
+            value=msg.value().decode('utf-8')))
+        msg_partition[msg.key().decode('utf-8')] = msg.partition()
+
+
+# Produce Messages
+def produce_messages(producer_obj: Producer):
     # Topic to write messages
     topic = args.topic_name
     # Generate card number and security code details
@@ -62,7 +66,7 @@ if __name__ == '__main__':
     print(config_default.items())
 
     # Produce messages to Kafka Topic
-
+    produce_messages(producer)
 
     # Block until the messages are sent.
     # producer.poll(10000)
